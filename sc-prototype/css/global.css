@@ -59,6 +59,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none !important;
 }
 
 html {
@@ -66,6 +67,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: none;
 }
 
 body {
@@ -237,7 +239,6 @@ a {
   border: 1px solid var(--color-ink);
   background: transparent;
   color: var(--color-ink);
-  cursor: none;
   position: relative;
   overflow: hidden;
   transition: color 400ms var(--ease-smooth);
@@ -398,7 +399,6 @@ a {
   gap: 6px;
   background: none;
   border: none;
-  cursor: none;
   padding: var(--sp-2);
 }
 
@@ -455,7 +455,6 @@ a {
   border: none;
   font-size: 28px;
   color: var(--color-ink);
-  cursor: none;
   font-family: var(--font-display);
   font-weight: 300;
 }
@@ -605,11 +604,10 @@ a {
   height: 12px;
   border-radius: 50%;
   background: var(--color-accent);
-  opacity: 0.5;
+  opacity: 0.6;
   pointer-events: none;
   z-index: 10001;
-  transform: translate(-50%, -50%);
-  will-change: left, top, width, height, opacity, background;
+  will-change: transform;
   transition: width 300ms var(--ease-out),
               height 300ms var(--ease-out),
               opacity 300ms var(--ease-out),
@@ -622,13 +620,13 @@ a {
   height: 48px;
   background: transparent;
   border: 1.5px solid var(--color-accent);
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .cursor.cursor-text {
-  width: 6px;
-  height: 6px;
-  opacity: 0.4;
+  width: 4px;
+  height: 4px;
+  opacity: 0.5;
 }
 
 /* --- Reveal Animation Base --- */
@@ -683,13 +681,22 @@ img {
 }
 
 @media (max-width: 767px) {
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+
+  html, body {
+    cursor: auto !important;
+  }
+
   body {
-    cursor: auto;
     font-size: 16px;
   }
 
   .cursor {
-    display: none;
+    display: none !important;
   }
 
   .grid {
