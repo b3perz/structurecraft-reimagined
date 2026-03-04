@@ -6,21 +6,20 @@
   'use strict';
 
   /* ---- bail on touch / small screens ---- */
-  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouch) return;
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   if (window.innerWidth < 768) return;
 
-  /* ---- create cursor element ---- */
+  /* ---- create cursor element on <html> to avoid body stacking issues ---- */
   var cursor = document.createElement('div');
   cursor.className = 'cursor';
-  document.body.appendChild(cursor);
+  document.documentElement.appendChild(cursor);
 
   /* ---- state ---- */
   var mouseX = -100;
   var mouseY = -100;
   var cursorX = -100;
   var cursorY = -100;
-  var raf = null;
+  var active = false;
 
   /* ---- positioning loop (LERP) ---- */
   function render() {
@@ -28,52 +27,57 @@
     cursorY += (mouseY - cursorY) * 0.15;
     cursor.style.left = cursorX + 'px';
     cursor.style.top = cursorY + 'px';
-    raf = requestAnimationFrame(render);
+    requestAnimationFrame(render);
+  }
+  render();
+
+  /* ---- show cursor ---- */
+  function showCursor(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!active) {
+      cursorX = mouseX;
+      cursorY = mouseY;
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      active = true;
+    }
+    cursor.classList.add('visible');
   }
 
   /* ---- mouse tracking ---- */
   document.addEventListener('mousemove', function (e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!active) {
+      cursorX = mouseX;
+      cursorY = mouseY;
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      cursor.classList.add('visible');
+      active = true;
+    }
   });
 
-  /* ---- show / hide ---- */
-  document.addEventListener('mouseenter', function (e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorX = mouseX;
-    cursorY = mouseY;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    cursor.classList.add('visible');
-    if (!raf) render();
-  });
-
+  /* ---- hide on leave, show on enter ---- */
   document.addEventListener('mouseleave', function () {
     cursor.classList.remove('visible');
+    cursor.classList.remove('cursor-hover');
+  });
+
+  document.addEventListener('mouseenter', function (e) {
+    showCursor(e);
   });
 
   /* ---- hover state on interactive elements ---- */
-  var interactiveSelector = 'a, button, .project-card, .btn, .filter-btn, .accordion-toggle, .gallery-nav button, input, textarea, select';
+  var interactiveSelector = 'a, button, [role="button"], .project-card, .btn, .filter-btn, .accordion-toggle, input, textarea, select, label';
 
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest(interactiveSelector)) {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
       cursor.classList.add('cursor-hover');
     } else {
       cursor.classList.remove('cursor-hover');
     }
-  });
-
-  /* ---- start the loop ---- */
-  render();
-  /* show once first mousemove arrives (starts hidden via opacity:0) */
-  document.addEventListener('mousemove', function show() {
-    cursorX = mouseX;
-    cursorY = mouseY;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    cursor.classList.add('visible');
-    document.removeEventListener('mousemove', show);
   });
 
   /* ---- grain texture shift ---- */
