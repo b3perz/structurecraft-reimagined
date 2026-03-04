@@ -600,33 +600,28 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
   border-radius: 50%;
   background: var(--color-accent);
-  opacity: 0.6;
+  opacity: 0.7;
   pointer-events: none;
   z-index: 10001;
-  will-change: transform;
-  transition: width 300ms var(--ease-out),
-              height 300ms var(--ease-out),
-              opacity 300ms var(--ease-out),
-              background 300ms var(--ease-out),
-              border 300ms var(--ease-out);
+  transition: width 250ms ease, height 250ms ease,
+              margin 250ms ease, opacity 250ms ease,
+              background 250ms ease, border 250ms ease;
 }
 
-.cursor.cursor-interactive {
-  width: 48px;
-  height: 48px;
+.cursor.cursor-hover {
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  margin-top: -22px;
   background: transparent;
   border: 1.5px solid var(--color-accent);
-  opacity: 0.7;
-}
-
-.cursor.cursor-text {
-  width: 4px;
-  height: 4px;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 /* --- Reveal Animation Base --- */
