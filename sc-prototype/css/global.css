@@ -553,27 +553,6 @@ a {
   overflow: hidden;
 }
 
-.placeholder img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.placeholder-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--sp-2) var(--sp-3);
-  background: rgba(0, 0, 0, 0.65);
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.4;
-}
-
 /* Video placeholder overlay */
 .placeholder-video {
   position: relative;
@@ -594,13 +573,9 @@ a {
   z-index: 2;
 }
 
-/* Artifact styling (historical/sketch images) */
+/* Artifact styling (historical/sketch placeholders) */
 .placeholder-artifact {
   border: 2px dashed var(--color-mid);
-}
-
-.placeholder-artifact img {
-  opacity: 0.85;
 }
 
 /* --- Custom Cursor --- */
