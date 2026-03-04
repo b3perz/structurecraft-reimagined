@@ -10,13 +10,13 @@
   if ('ontouchstart' in window || window.innerWidth < 768) return;
 
   // --- State ---
-  const mouse = { x: -100, y: -100 };
-  const cursor = { x: -100, y: -100 };
-  let hasMoved = false;
-  const LERP = 0.15;
+  var mouse = { x: -100, y: -100 };
+  var cursor = { x: -100, y: -100 };
+  var hasMoved = false;
+  var LERP = 0.15;
 
   // --- Cursor Element ---
-  const cursorEl = document.createElement('div');
+  var cursorEl = document.createElement('div');
   cursorEl.className = 'cursor';
   cursorEl.style.opacity = '0';
   document.body.appendChild(cursorEl);
@@ -26,7 +26,7 @@
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 
-    // Snap cursor to mouse on first move (no lag from center)
+    // Snap cursor to mouse on first move (no lag from off-screen)
     if (!hasMoved) {
       cursor.x = mouse.x;
       cursor.y = mouse.y;
@@ -133,11 +133,15 @@
   });
 
   // --- Animation Loop ---
+  // Use transform for positioning — GPU composited, no layout thrash.
+  // The -50%/-50% centers the dot on the actual mouse position
+  // regardless of the dot's current CSS width/height.
   function updateCursor() {
     cursor.x += (mouse.x - cursor.x) * LERP;
     cursor.y += (mouse.y - cursor.y) * LERP;
-    cursorEl.style.left = cursor.x + 'px';
-    cursorEl.style.top = cursor.y + 'px';
+
+    cursorEl.style.transform =
+      'translate(' + cursor.x + 'px, ' + cursor.y + 'px) translate(-50%, -50%)';
 
     requestAnimationFrame(updateCursor);
   }
