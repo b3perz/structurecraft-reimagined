@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efficiency — StructureCraft</title>
+  <meta name="description" content="Efficiency data from our projects. Material use, timelines, and what happens when engineers and builders work together.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-efficiency" style="background: var(--color-dark-bg); color: var(--color-dark-text);">
+
+  <nav class="nav" role="navigation" aria-label="Main navigation" style="background: rgba(44, 47, 51, 0.85);">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="color: var(--color-dark-text);">StructureCraft</a>
+      <ul class="nav-links">
+        <li><a href="work.html" class="link-underline" style="color: var(--color-dark-text);">Work</a></li>
+        <li><a href="approach.html" class="link-underline" style="color: var(--color-dark-text);">Approach</a></li>
+        <li><a href="efficiency.html" class="link-underline active" style="color: var(--color-dark-text);">Efficiency</a></li>
+        <li><a href="story.html" class="link-underline" style="color: var(--color-dark-text);">Story</a></li>
+        <li><a href="people.html" class="link-underline" style="color: var(--color-dark-text);">People</a></li>
+        <li><a href="contact.html" class="link-underline" style="color: var(--color-dark-text);">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Open menu"><span style="background: var(--color-dark-text);"></span><span style="background: var(--color-dark-text);"></span></button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" role="dialog" aria-label="Navigation menu" style="background: var(--color-dark-bg);">
+    <button class="nav-overlay-close" aria-label="Close menu" style="color: var(--color-dark-text);">&times;</button>
+    <ul class="nav-overlay-links">
+      <li><a href="work.html" style="color: var(--color-dark-text);">Work</a></li>
+      <li><a href="approach.html" style="color: var(--color-dark-text);">Approach</a></li>
+      <li><a href="efficiency.html" style="color: var(--color-dark-text);">Efficiency</a></li>
+      <li><a href="story.html" style="color: var(--color-dark-text);">Story</a></li>
+      <li><a href="people.html" style="color: var(--color-dark-text);">People</a></li>
+      <li><a href="contact.html" style="color: var(--color-dark-text);">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="efficiency-hero">
+      <h1 class="reveal">How much does your building weigh?</h1>
+      <p class="attribution reveal" style="transition-delay: 200ms;">Buckminster Fuller to Norman Foster, 1983. A question worth asking on every project.</p>
+    </section>
+
+    <!-- The Numbers -->
+    <section>
+      <div class="metrics-grid reveal-stagger">
+        <div class="metric-card reveal">
+          <span class="counter accent-glow" data-target="38" data-suffix="%">0%</span>
+          <p class="counter-label">average material reduction</p>
+          <p class="counter-desc">Compared to conventional timber design across our portfolio</p>
+        </div>
+        <div class="metric-card reveal">
+          <span class="counter accent-glow" data-target="60" data-suffix="+">0+</span>
+          <p class="counter-label">projects completed</p>
+          <p class="counter-desc">Buildings, bridges, pavilions, and interiors across North America</p>
+        </div>
+        <div class="metric-card reveal">
+          <span class="counter accent-glow" data-target="14" data-suffix=" days">0 days</span>
+          <p class="counter-label">average redesign timeline</p>
+          <p class="counter-desc">From identifying a problem to proposing a solution</p>
+        </div>
+        <div class="metric-card reveal">
+          <span class="text-mono" style="font-size: clamp(36px, 6vw, 72px); color: var(--color-accent); display: block;">< 100</span>
+          <p class="counter-label">kg CO&#8322;e/m&#178;</p>
+          <p class="counter-desc">Embodied carbon target for timber structures — compared to 350+ for conventional concrete</p>
+        </div>
+        <div class="metric-card reveal">
+          <span class="counter accent-glow" data-target="5" data-suffix=" buildings">0 buildings</span>
+          <p class="counter-label">T3 system, refined over a decade</p>
+          <p class="counter-desc">Same structural logic for Hines, improved each time</p>
+        </div>
+        <div class="metric-card reveal">
+          <span class="text-mono" style="font-size: clamp(36px, 6vw, 72px); color: var(--color-accent); display: block;">1 pinky</span>
+          <p class="counter-label">force to lift a 6m ceiling panel</p>
+          <p class="counter-desc" style="max-width: 300px;">Counterbalanced demountable panels we designed for Apple.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why We Publish This -->
+    <section class="why-publish">
+      <h2 class="reveal">Why we share this</h2>
+      <p class="reveal">When the people who design a building also build it, they tend to learn where material is doing work and where it isn't. That knowledge accumulates over years and projects. Here's what the pattern looks like.</p>
+    </section>
+
+    <div class="divider" style="background: rgba(240, 243, 245, 0.1);"></div>
+
+    <!-- Project-by-Project -->
+    <section class="efficiency-table">
+      <h2 class="reveal" style="font-size: 28px;">Project-by-Project</h2>
+
+      <div class="eff-row eff-row-header">
+        <span>Project</span>
+        <span>Original</span>
+        <span>SC Redesign</span>
+        <span>Outcome</span>
+        <span>Timeline</span>
+      </div>
+
+      <div class="eff-row reveal">
+        <span class="project-name">Gaylord Rockies Pool</span>
+        <span>$13.2M</span>
+        <span>$8.2M</span>
+        <span class="savings">38% reduction</span>
+        <span>2 weeks</span>
+      </div>
+
+      <div class="eff-row reveal">
+        <span class="project-name">Peel Regional Police HQ</span>
+        <span>$24M (timber)</span>
+        <span>$14.4M</span>
+        <span class="savings">~40% lighter</span>
+        <span>4 weeks</span>
+      </div>
+
+      <div class="eff-row reveal">
+        <span class="project-name">T3 Bayside (per building)</span>
+        <span>Baseline est.</span>
+        <span>Optimized system</span>
+        <span class="savings">15-20% per cycle</span>
+        <span>Ongoing</span>
+      </div>
+
+      <div class="eff-row reveal">
+        <span class="project-name">Virginia Creeper Bridges</span>
+        <span>N/A (new)</span>
+        <span>$1.8M</span>
+        <span class="savings">On budget</span>
+        <span>10 months</span>
+      </div>
+
+      <div class="eff-row reveal">
+        <span class="project-name">Apple Raleigh Campus</span>
+        <span>TBD</span>
+        <span>TBD</span>
+        <span class="savings">Mock-up approved</span>
+        <span>3 mo. mock-up</span>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section text-center">
+      <div class="container reveal">
+        <h3 style="font-size: 28px; color: var(--color-dark-text); margin-bottom: var(--sp-4);">Curious about your project's numbers?</h3>
+        <p class="text-body mx-auto text-center" style="max-width: 480px; color: var(--color-dark-mid); margin-bottom: var(--sp-5);">Every project is different. Tell us about yours and we'll share what we can.</p>
+        <a href="contact.html" class="btn" style="border-color: var(--color-dark-text); color: var(--color-dark-text);">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="border-top: 1px solid rgba(240, 243, 245, 0.06);">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-brand-name">StructureCraft</p>
+        <p class="footer-brand-desc">Design. Engineering. Fabrication. Construction.</p>
+        <div class="footer-breath"></div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="approach.html">Approach</a></li>
+          <li><a href="efficiency.html">Efficiency</a></li>
+          <li><a href="story.html">Story</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul><li><a href="mailto:hello@structurecraft.com">hello@structurecraft.com</a></li></ul>
+        <p style="margin-top: var(--sp-4); font-size: 14px; color: var(--color-dark-mid);">Abbotsford, BC &middot; Seattle, WA</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2026 StructureCraft. Vancouver &middot; Seattle</p>
+    </div>
+  </footer>
+
+  <script src="js/mouse.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
