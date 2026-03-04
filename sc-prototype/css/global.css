@@ -607,9 +607,9 @@ a {
   background: var(--color-accent);
   opacity: 0.5;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 10001;
   transform: translate(-50%, -50%);
-  will-change: transform, width, height, opacity, background;
+  will-change: left, top, width, height, opacity, background;
   transition: width 300ms var(--ease-out),
               height 300ms var(--ease-out),
               opacity 300ms var(--ease-out),

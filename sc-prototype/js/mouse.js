@@ -10,13 +10,15 @@
   if ('ontouchstart' in window || window.innerWidth < 768) return;
 
   // --- State ---
-  const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  const cursor = { x: mouse.x, y: mouse.y };
-  const LERP = 0.08;
+  const mouse = { x: -100, y: -100 };
+  const cursor = { x: -100, y: -100 };
+  let hasMoved = false;
+  const LERP = 0.15;
 
   // --- Cursor Element ---
   const cursorEl = document.createElement('div');
   cursorEl.className = 'cursor';
+  cursorEl.style.opacity = '0';
   document.body.appendChild(cursorEl);
 
   // --- Track Mouse ---
@@ -24,9 +26,17 @@
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 
+    // Snap cursor to mouse on first move (no lag from center)
+    if (!hasMoved) {
+      cursor.x = mouse.x;
+      cursor.y = mouse.y;
+      cursorEl.style.opacity = '';
+      hasMoved = true;
+    }
+
     // Grain texture shift
-    const grainX = (e.clientX / window.innerWidth - 0.5) * 2;
-    const grainY = (e.clientY / window.innerHeight - 0.5) * 2;
+    var grainX = (e.clientX / window.innerWidth - 0.5) * 2;
+    var grainY = (e.clientY / window.innerHeight - 0.5) * 2;
     document.body.style.setProperty('--grain-x', grainX + 'px');
     document.body.style.setProperty('--grain-y', grainY + 'px');
 
@@ -110,11 +120,15 @@
     }
   });
 
-  // Hide cursor when leaving window
+  // Hide cursor when leaving window, snap on re-enter
   document.addEventListener('mouseleave', function () {
     cursorEl.style.opacity = '0';
   });
-  document.addEventListener('mouseenter', function () {
+  document.addEventListener('mouseenter', function (e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    cursor.x = e.clientX;
+    cursor.y = e.clientY;
     cursorEl.style.opacity = '';
   });
 
@@ -122,28 +136,11 @@
   function updateCursor() {
     cursor.x += (mouse.x - cursor.x) * LERP;
     cursor.y += (mouse.y - cursor.y) * LERP;
-    cursorEl.style.transform =
-      'translate(' + cursor.x + 'px, ' + cursor.y + 'px) translate(-50%, -50%)';
-
-    // Grain texture follows mouse subtly
-    var bStyle = document.body.style;
-    bStyle.setProperty(
-      '--grain-translate',
-      'translate(' +
-        ((mouse.x / window.innerWidth - 0.5) * 2) +
-        'px, ' +
-        ((mouse.y / window.innerHeight - 0.5) * 2) +
-        'px)'
-    );
+    cursorEl.style.left = cursor.x + 'px';
+    cursorEl.style.top = cursor.y + 'px';
 
     requestAnimationFrame(updateCursor);
   }
 
   requestAnimationFrame(updateCursor);
-
-  // Update grain pseudo-element with mouse-driven transform
-  var style = document.createElement('style');
-  style.textContent =
-    'body::before { transform: var(--grain-translate, translate(0,0)); }';
-  document.head.appendChild(style);
 })();
