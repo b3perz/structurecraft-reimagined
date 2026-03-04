@@ -232,7 +232,6 @@ hr {
   font-size: 18px;
   font-weight: 500;
   color: var(--color-ink);
-  cursor: none;
   text-align: left;
 }
 
@@ -280,6 +279,11 @@ hr {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Keep cursor transitions functional */
+  .cursor {
+    transition-duration: 150ms !important;
   }
 
   .reveal {
