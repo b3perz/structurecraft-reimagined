@@ -1,0 +1,300 @@
+/* ============================================
+   STRUCTURECRAFT 2.0 — ANIMATIONS
+   All motion, transitions, mouse-reactive effects
+   ============================================ */
+
+/* --- Keyframes --- */
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes pulse-play {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes draw-line {
+  from { width: 0; }
+  to { width: 30%; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wipe-reveal {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@keyframes count-glow {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 20px var(--color-accent-30); }
+}
+
+/* --- Page Enter Animation --- */
+.page-enter {
+  animation: fade-in-up 500ms var(--ease-out) forwards;
+}
+
+/* --- Staggered Reveal --- */
+.reveal-stagger .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger .reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger .reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger .reveal:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger .reveal:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger .reveal:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger .reveal:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger .reveal:nth-child(8) { transition-delay: 560ms; }
+
+/* --- Sequential Fade (for stats) --- */
+.seq-fade .seq-item {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+.seq-fade.revealed .seq-item:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.seq-fade.revealed .seq-item:nth-child(2) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+.seq-fade.revealed .seq-item:nth-child(3) { transition-delay: 800ms; opacity: 1; transform: translateY(0); }
+
+/* --- Image Wipe Reveal --- */
+.wipe-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.wipe-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 800ms var(--ease-out);
+  z-index: 2;
+}
+
+.wipe-reveal.revealed::after {
+  transform: scaleX(0);
+}
+
+/* --- Hover Data Reveal (Project Cards) --- */
+.card-hover-data {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--sp-4) var(--sp-5);
+  background: rgba(26, 26, 24, 0.85);
+  backdrop-filter: blur(8px);
+  transform: translateY(100%);
+  transition: transform 400ms var(--ease-out);
+  z-index: 3;
+}
+
+.project-card:hover .card-hover-data {
+  transform: translateY(0);
+}
+
+/* --- Mouse-Reactive Image Shift --- */
+.mouse-reactive {
+  transition: transform 200ms var(--ease-smooth);
+  will-change: transform;
+}
+
+/* --- Section Divider Pulse --- */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--color-mid);
+  margin: var(--sp-6) auto;
+  transition: width 400ms var(--ease-out);
+}
+
+.divider.pulsed {
+  width: 100px;
+}
+
+/* --- Text Luminance Effect --- */
+.text-luminance {
+  transition: opacity 300ms var(--ease-smooth);
+}
+
+/* --- Accent Glow --- */
+.accent-glow {
+  transition: color 300ms var(--ease-smooth), text-shadow 300ms var(--ease-smooth);
+}
+
+.accent-glow.glowing {
+  color: var(--color-accent-glow);
+  text-shadow: 0 0 12px var(--color-accent-30);
+}
+
+/* --- Counter Animation --- */
+.counter {
+  font-family: var(--font-mono);
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 400;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.counter-label {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-dark-mid);
+  margin-top: var(--sp-2);
+}
+
+.counter-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-dark-mid);
+  margin-top: var(--sp-2);
+  max-width: 280px;
+}
+
+/* --- Timeline Animations --- */
+.timeline-entry {
+  opacity: 0;
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.timeline-entry.from-left {
+  transform: translateX(-30px);
+}
+
+.timeline-entry.from-right {
+  transform: translateX(30px);
+}
+
+.timeline-entry.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Horizontal Rule Animation --- */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--color-ink-10);
+  margin: var(--sp-7) 0;
+}
+
+/* --- Opening Line Draw --- */
+.line-draw {
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  margin: 0 auto;
+  animation: draw-line 2s var(--ease-out) 0.5s forwards;
+}
+
+/* --- Accordion Expand --- */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms var(--ease-out), padding 400ms var(--ease-out);
+  padding: 0 var(--sp-5);
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 500px;
+  padding: var(--sp-4) var(--sp-5);
+}
+
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--sp-4) var(--sp-5);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-ink-10);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-ink);
+  cursor: none;
+  text-align: left;
+}
+
+.accordion-toggle::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  transition: transform 300ms var(--ease-out);
+}
+
+.accordion-item.open .accordion-toggle::after {
+  transform: rotate(45deg);
+}
+
+/* --- Horizontal Scroll Gallery --- */
+.h-scroll {
+  display: flex;
+  gap: var(--sp-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--sp-4) 0;
+  scrollbar-width: none;
+}
+
+.h-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.h-scroll-item {
+  flex: 0 0 70vw;
+  scroll-snap-align: center;
+}
+
+/* --- Parallax --- */
+.parallax {
+  will-change: transform;
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .timeline-entry {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .h-scroll-item {
+    flex: 0 0 90vw;
+  }
+}

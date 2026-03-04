@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — StructureCraft</title>
+  <meta name="description" content="Selected projects spanning buildings, bridges, pavilions, and interiors in mass timber.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-work">
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">StructureCraft</a>
+      <ul class="nav-links">
+        <li><a href="work.html" class="link-underline active">Work</a></li>
+        <li><a href="approach.html" class="link-underline">Approach</a></li>
+        <li><a href="efficiency.html" class="link-underline">Efficiency</a></li>
+        <li><a href="story.html" class="link-underline">Story</a></li>
+        <li><a href="people.html" class="link-underline">People</a></li>
+        <li><a href="contact.html" class="link-underline">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <button class="nav-overlay-close" aria-label="Close menu">&times;</button>
+    <ul class="nav-overlay-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="efficiency.html">Efficiency</a></li>
+      <li><a href="story.html">Story</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="work-hero">
+      <div class="placeholder placeholder-video" style="border-radius: 0;">
+        <span class="placeholder-text">Ambient video: slow timelapse of timber fabrication in the shop — CNC routing, glulam beams being lifted, sawdust catching light</span>
+      </div>
+      <h1 class="reveal">Every project is a proof point.</h1>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="building">Buildings</button>
+      <button class="filter-btn" data-filter="bridge">Bridges</button>
+      <button class="filter-btn" data-filter="pavilion">Pavilions</button>
+      <button class="filter-btn" data-filter="interior">Interiors</button>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-grid">
+      <!-- 1. Gaylord - Large -->
+      <div class="project-card card-lg wipe-reveal" data-type="interior">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 420px;">
+          <span class="placeholder-text">Soaring timber ceiling over an indoor pool, golden light filtering through exposed structure</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">$5M saved</span>
+          <span class="stat-label"> — 2-week redesign</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">Gaylord Rockies Pool</h3>
+          <p class="project-card-location">Aurora, Colorado</p>
+          <p class="project-card-quote">"We redesigned a $5M problem in 2 weeks."</p>
+        </div>
+      </div>
+
+      <!-- 2. Princeton - Small -->
+      <div class="project-card card-sm wipe-reveal" data-type="building">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">Modern campus buildings, timber and glass, Princeton University</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">Princeton Engineering</h3>
+        </div>
+      </div>
+
+      <!-- 3. Virginia Creeper - Medium -->
+      <div class="project-card card-md wipe-reveal" data-type="bridge">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">Utilitarian timber footbridge in lush Appalachian forest setting</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">Efficient</span>
+          <span class="stat-label"> — beauty through economy</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">Virginia Creeper Trail Bridges</h3>
+          <p class="project-card-location">Virginia</p>
+        </div>
+      </div>
+
+      <!-- 4. T3 - Large -->
+      <div class="project-card card-lg wipe-reveal" data-type="building">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 420px;">
+          <span class="placeholder-text">Mass timber office building, clean geometry, repeating structural bays, urban context</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">5 buildings, 10 years</span>
+          <span class="stat-label"> — the backbone of efficiency at scale</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">T3 Bayside, Toronto</h3>
+          <p class="project-card-location">Toronto, Ontario</p>
+          <p class="project-card-quote">"Efficiency at scale. Five buildings. Ten years of backbone."</p>
+        </div>
+      </div>
+
+      <!-- 5. Johns Hopkins - Medium -->
+      <div class="project-card card-md wipe-reveal" data-type="building">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">27 roof planes converging, campus setting, students walking</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">27 roof planes</span>
+          <span class="stat-label"> — approachable from every side</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">Johns Hopkins Student Center</h3>
+          <p class="project-card-location">Baltimore, Maryland</p>
+        </div>
+      </div>
+
+      <!-- 6. Bow River - Medium -->
+      <div class="project-card card-md wipe-reveal" data-type="bridge">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">Sculptural timber pedestrian bridge at dusk, reflection in river water</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">Sculptural</span>
+          <span class="stat-label"> — engineering as art</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">Bow River Pedestrian Bridge</h3>
+          <p class="project-card-location">Banff, Alberta</p>
+        </div>
+      </div>
+
+      <!-- 7. IMTC - Large -->
+      <div class="project-card card-lg wipe-reveal" data-type="pavilion">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 420px;">
+          <span class="placeholder-text">Bending-active DLT shell, dramatic interior light, people gathered for an event</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">Experimental</span>
+          <span class="stat-label"> — frozen dowels, curved DLT panels</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">IMTC Pavilion with Lake Flato</h3>
+          <p class="project-card-location">Austin, Texas</p>
+          <p class="project-card-quote">"We threw out the rulebook. Then we put dowels in the freezer."</p>
+        </div>
+      </div>
+
+      <!-- 8. Apple - Small -->
+      <div class="project-card card-sm wipe-reveal" data-type="interior">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">Mock-up interior, demountable counterbalanced ceiling panels, precision fabrication</span>
+        </div>
+        <div class="project-card-info" style="opacity: 0.8;">
+          <h3 class="project-card-name" style="color: #fff;">Apple Raleigh Campus</h3>
+          <p class="project-card-location" style="color: rgba(255,255,255,0.6);">On hold</p>
+        </div>
+      </div>
+
+      <!-- 9. Richmond Oval - Small -->
+      <div class="project-card card-sm wipe-reveal" data-type="building">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">Long-span timber roof, pine beetle-killed 2x4 lattice, Olympic venue interior</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name" style="color: #fff;">Richmond Olympic Oval</h3>
+        </div>
+      </div>
+
+      <!-- 10. Peel Police - Medium -->
+      <div class="project-card card-md wipe-reveal" data-type="building">
+        <div class="placeholder project-card-image mouse-reactive" style="min-height: 300px;">
+          <span class="placeholder-text">Institutional building, exposed mass timber structure, clean lines</span>
+        </div>
+        <div class="card-hover-data">
+          <span class="stat">40% savings</span>
+          <span class="stat-label"> — value engineering, line by line</span>
+        </div>
+        <div class="project-card-info">
+          <h3 class="project-card-name">Peel Regional Police HQ</h3>
+          <p class="project-card-location">Ontario</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-brand-name">StructureCraft</p>
+        <p class="footer-brand-desc">Designing, engineering, and building structures in mass timber since 1998.</p>
+        <div class="footer-breath"></div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="approach.html">Approach</a></li>
+          <li><a href="efficiency.html">Efficiency</a></li>
+          <li><a href="story.html">Story</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@structurecraft.com">hello@structurecraft.com</a></li>
+          <li><a href="tel:+16045551234">+1 604 555 1234</a></li>
+        </ul>
+        <p style="margin-top: var(--sp-4); font-size: 14px; color: var(--color-dark-mid); line-height: 1.6;">Abbotsford, BC &middot; Seattle, WA</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">&copy; 2026 StructureCraft. Vancouver &middot; Seattle</p>
+    </div>
+  </footer>
+
+  <script src="js/mouse.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
