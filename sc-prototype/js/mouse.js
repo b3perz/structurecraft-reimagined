@@ -5,69 +5,78 @@
 (function () {
   'use strict';
 
-  // Skip on mobile/touch
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+  /* ---- bail on touch / small screens ---- */
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouch) return;
   if (window.innerWidth < 768) return;
 
-  // --- Custom Cursor ---
-  var dot = document.createElement('div');
-  dot.className = 'cursor';
-  document.body.appendChild(dot);
+  /* ---- create cursor element ---- */
+  var cursor = document.createElement('div');
+  cursor.className = 'cursor';
+  document.body.appendChild(cursor);
 
-  var mx = 0, my = 0;   // actual mouse position
-  var dx = 0, dy = 0;   // drawn (lerped) position
-  var visible = false;
+  /* ---- state ---- */
+  var mouseX = -100;
+  var mouseY = -100;
+  var cursorX = -100;
+  var cursorY = -100;
+  var raf = null;
 
-  function show() {
-    if (!visible) { dot.style.display = ''; visible = true; }
+  /* ---- positioning loop (LERP) ---- */
+  function render() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    raf = requestAnimationFrame(render);
   }
-  function hide() {
-    if (visible) { dot.style.display = 'none'; visible = false; }
-  }
 
-  // Start hidden
-  hide();
-
+  /* ---- mouse tracking ---- */
   document.addEventListener('mousemove', function (e) {
-    mx = e.clientX;
-    my = e.clientY;
-    if (!visible) {
-      // First move: snap instantly, no lerp lag
-      dx = mx;
-      dy = my;
-      show();
-    }
+    mouseX = e.clientX;
+    mouseY = e.clientY;
   });
 
-  document.addEventListener('mouseleave', hide);
+  /* ---- show / hide ---- */
   document.addEventListener('mouseenter', function (e) {
-    mx = e.clientX;
-    my = e.clientY;
-    dx = mx;
-    dy = my;
-    show();
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorX = mouseX;
+    cursorY = mouseY;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    cursor.classList.add('visible');
+    if (!raf) render();
   });
 
-  // Cursor state: expand ring on interactive elements
+  document.addEventListener('mouseleave', function () {
+    cursor.classList.remove('visible');
+  });
+
+  /* ---- hover state on interactive elements ---- */
+  var interactiveSelector = 'a, button, .project-card, .btn, .filter-btn, .accordion-toggle, .gallery-nav button, input, textarea, select';
+
   document.addEventListener('mouseover', function (e) {
-    var t = e.target;
-    if (t.closest('a') || t.closest('button') || t.closest('.project-card') || t.closest('.btn')) {
-      dot.classList.add('cursor-hover');
+    if (e.target.closest(interactiveSelector)) {
+      cursor.classList.add('cursor-hover');
     } else {
-      dot.classList.remove('cursor-hover');
+      cursor.classList.remove('cursor-hover');
     }
   });
 
-  // Animation loop — position via left/top, center via negative margins
-  (function tick() {
-    dx += (mx - dx) * 0.15;
-    dy += (my - dy) * 0.15;
-    dot.style.left = dx + 'px';
-    dot.style.top = dy + 'px';
-    requestAnimationFrame(tick);
-  })();
+  /* ---- start the loop ---- */
+  render();
+  /* show once first mousemove arrives (starts hidden via opacity:0) */
+  document.addEventListener('mousemove', function show() {
+    cursorX = mouseX;
+    cursorY = mouseY;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    cursor.classList.add('visible');
+    document.removeEventListener('mousemove', show);
+  });
 
-  // --- Grain texture shift ---
+  /* ---- grain texture shift ---- */
   document.addEventListener('mousemove', function (e) {
     var gx = (e.clientX / window.innerWidth - 0.5) * 2;
     var gy = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -75,7 +84,7 @@
     document.body.style.setProperty('--grain-y', gy + 'px');
   });
 
-  // --- Mouse-reactive parallax ---
+  /* ---- mouse-reactive parallax ---- */
   document.addEventListener('mousemove', function (e) {
     var els = document.querySelectorAll('.mouse-reactive');
     for (var i = 0; i < els.length; i++) {
@@ -97,7 +106,7 @@
     }
   });
 
-  // --- Accent glow proximity ---
+  /* ---- accent glow proximity ---- */
   document.addEventListener('mousemove', function (e) {
     var els = document.querySelectorAll('.accent-glow');
     for (var i = 0; i < els.length; i++) {
@@ -107,7 +116,7 @@
     }
   });
 
-  // --- Divider pulse ---
+  /* ---- divider pulse ---- */
   document.addEventListener('mousemove', function (e) {
     var els = document.querySelectorAll('.divider');
     for (var i = 0; i < els.length; i++) {

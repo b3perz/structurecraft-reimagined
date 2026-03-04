@@ -125,7 +125,6 @@
   border: 1px solid var(--color-ink-10);
   background: transparent;
   font-size: 18px;
-  cursor: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -367,7 +366,6 @@
   color: var(--color-mid);
   background: none;
   border: none;
-  cursor: none;
   padding: var(--sp-2) 0;
   border-bottom: 2px solid transparent;
   transition: color 300ms, border-color 300ms;
